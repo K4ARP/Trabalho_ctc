@@ -38,3 +38,19 @@ h1 {
     font-weight: bold;
     cursor: pointer;
 }
+#indicando-x, #indicando-o{
+    position: fixed;
+    width: 60px;
+    height: auto;
+    bottom: 50px;
+    transition: background-color 0.2s;
+}
+#indicando-x{
+    right: 180px;
+}
+#indicando-o{
+    right: 95px;
+}
+.ativo {
+    background-color: rgb(255, 0, 0);
+}

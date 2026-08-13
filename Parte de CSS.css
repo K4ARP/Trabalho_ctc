@@ -64,6 +64,8 @@ h1 {
     background-color: rgba(0,0,0,0.6);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .overlay.mostrar {
@@ -73,6 +75,17 @@ h1 {
 #imagem-resultado {
     width: 400px;
     animation: subir 0.4s ease-out;
+}
+
+#btn-restart {
+    width: 260px;
+    cursor: pointer;
+    animation: subir 0.4s ease-out;
+    transition: transform 0.15s;
+}
+
+#btn-restart {
+    transform: scale(1.05);
 }
 
 @keyframes subir {

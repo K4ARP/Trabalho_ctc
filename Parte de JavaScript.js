@@ -1,11 +1,11 @@
-const container = document.getElementById("jogo")
+const container = document.getElementById("jogo");
 
-const tab = document.createElement("div")
-tab.classList.add("tab")
+const tab = document.createElement("div");
+tab.classList.add("tab");
 
 for (let i = 0; i < 9; i++){
     const quadrado = document.createElement("div");
-    quadrado.classList.add("quadrado")
+    quadrado.classList.add("quadrado");
     quadrado.dataset.index = i;
 
     tab.appendChild(quadrado);
@@ -19,9 +19,11 @@ const indicador_o = document.getElementById("indicando-o");
 const overlay = document.getElementById("overlay");
 const imagemResultado = document.getElementById("imagem-resultado");
 
+const btnRestart = document.getElementById("btn-restart");
+
 let jogadorAtual = "x";
 let jogoAcabou = false;
-const tabuleiro = ["","","","","","","","",""]
+const tabuleiro = ["","","","","","","","",""];
 
 const combinacoesVitoria = [
     [0,1,2], [3,4,5], [6,7,8],
@@ -41,7 +43,7 @@ function verificarResultado(){
         return null;
     }
 
-    return "Empate"
+    return "Empate";
 }
 
 tab.addEventListener("click", function(evento) {
@@ -75,12 +77,12 @@ tab.addEventListener("click", function(evento) {
 
     if (resultado === "Empate"){
         imagemResultado.src = "empate.svg";
-        overlay.classList.add("mostrar")
+        overlay.classList.add("mostrar");
         jogoAcabou = true;
         return;
     }
 
-    jogadorAtual = jogadorAtual === "x" ? "o" : "x"
+    jogadorAtual = jogadorAtual === "x" ? "o" : "x";
 
     indicador_x.classList.toggle("ativo", jogadorAtual === "x");
     indicador_o.classList.toggle("ativo", jogadorAtual === "o");
@@ -88,3 +90,6 @@ tab.addEventListener("click", function(evento) {
 
 });
 
+btnRestart.addEventListener("click", function() {
+    location.reload();
+});

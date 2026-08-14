@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+  <defs>
+    <linearGradient id="fundoO" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a50707"/>
+      <stop offset="100%" stop-color="#5c0303"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="500" height="350" rx="24" fill="url(#fundoO)"/>
+  <rect x="10" y="10" width="480" height="330" rx="18" fill="none" stroke="aliceblue" stroke-width="3" opacity="0.5"/>
+
+  <circle cx="250" cy="90" r="30" fill="none" stroke="aliceblue" stroke-width="12"/>
+
+  <text x="250" y="190" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30" font-weight="bold" fill="aliceblue" text-anchor="middle">
+    QUE PENA!
+  </text>
+  <text x="250" y="235" font-family="'Trebuchet MS', Arial, sans-serif" font-size="24" fill="aliceblue" text-anchor="middle">
+    Computador venceu dessa vez!
+  </text>
+
+  <line x1="150" y1="270" x2="350" y2="270" stroke="aliceblue" stroke-width="2" opacity="0.4"/>
+</svg>

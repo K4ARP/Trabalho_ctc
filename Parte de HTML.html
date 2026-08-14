@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da velha</title>
-    <link rel="stylesheet" href="Parte_2.css">
+    <link rel="stylesheet" href="parte2.css">
 </head>
 <body>
+
+    <!-- Título do jogo, sempre visível na tela -->
     <h1>JOGO DA VELHA</h1>
-    <div id="jogo"></div>
 
-    <img src="o.svg" alt="O" id="indicando-o">
-    <img src="x.svg" alt="X" id="indicando-x" class="ativo">
+    <!-- Frase que mostra de quem é a vez de jogar (jogador ou computador) -->
+    <p id="status-jogada" class="escondido-inicial">Jogador começa jogando!</p>
 
-    <div class="overlay" id="overlay">
-        <img src="" alt="resultado" id="imagem-resultado">
-        <img src="reiniciar.svg" alt="reiniciar jogo" id="btn-restart">
+    <!-- Tela inicial de escolha de dificuldade, aparece antes do jogo em si -->
+    <div class="tela-dificuldade" id="tela-dificuldade">
+        <h2>Escolha a dificuldade</h2>
+        <div class="botoes-dificuldade">
+            <img src="btn-facil.svg" alt="Fácil" class="btn-dificuldade" data-nivel="facil">
+            <img src="btn-medio.svg" alt="Médio" class="btn-dificuldade" data-nivel="medio">
+            <img src="btn-dificil.svg" alt="Difícil" class="btn-dificuldade" data-nivel="dificil">
+        </div>
     </div>
 
-    <script src="Parte_3.js"></script>
+    <!-- Onde o tabuleiro (os 9 quadrados) é criado via JavaScript -->
+    <div id="jogo" class="escondido-inicial"></div>
 
-   
+    <!-- Indicador fixo no canto da tela mostrando de quem é a vez (X ou O) -->
+    <img src="o.svg" alt="O" id="indicando-o" class="escondido-inicial">
+    <img src="x.svg" alt="X" id="indicando-x" class="ativo escondido-inicial">
+
+    <!-- Tela final: aparece por cima de tudo quando o jogo termina (vitória ou empate) -->
+    <div class="overlay" id="overlay">
+        <img src="" alt="resultado" id="imagem-resultado">
+        <img src="reiniciar.svg" alt="Reiniciar Jogo" id="btn-restart">
+    </div>
+
+    <!-- Arquivo com toda a lógica do jogo -->
+    <script src="parte3.js"></script>
 </body>
 </html>

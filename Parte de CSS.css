@@ -1,23 +1,41 @@
+/* ===== ESTRUTURA GERAL DA PÁGINA ===== */
 body {
     background-color: rgb(165, 7, 7);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;   /* deixa a página crescer se o conteúdo não couber na tela */
+    overflow-y: auto;    /* permite rolar verticalmente quando necessário */
     margin: 0;
-    
-
 }
+
+/* ===== TÍTULO E FRASE DE STATUS ===== */
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     padding: 10px;
     font-size: 50px;
     color: aliceblue;
-    margin-top: -80px;
-    margin-bottom: 80px;
+    margin-top: -70px;
+    margin-bottom: 10px;
 }
+
+#status-jogada {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: aliceblue;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* classe usada pra esconder elementos até a dificuldade ser escolhida */
+.escondido-inicial {
+    display: none;
+}
+
+/* ===== TABULEIRO (GRID 3x3) ===== */
 .tab {
     display: grid;
     grid-template-columns: repeat(3,200px);
@@ -27,7 +45,6 @@ h1 {
     border: 5px solid rgb(165, 7, 7);
     border-radius: 8px;
     width: max-content;
-    
 }
 .quadrado {
     background-color: rgb(165, 7, 7);
@@ -38,22 +55,45 @@ h1 {
     font-weight: bold;
     cursor: pointer;
 }
-#indicando-x, #indicando-o{
+
+/* animação de entrada do X/O quando aparece dentro de um quadrado */
+.marca {
+    width: 70%;
+    animation: aparecer 0.3s ease-out;
+}
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== INDICADOR DE TURNO (canto inferior direito) ===== */
+#indicando-x, #indicando-o {
     position: fixed;
-    width: 60px;
+    width: 25px;
     height: auto;
-    bottom: 50px;
+    bottom: 20px;
+    padding: 8px;
+    border-radius: 50%;
     transition: background-color 0.2s;
 }
-#indicando-x{
-    right: 180px;
+#indicando-x {
+    right: 70px;
 }
-#indicando-o{
-    right: 95px;
+#indicando-o {
+    right: 20px;
 }
+/* destaque (halo) em volta de quem está jogando agora */
 .ativo {
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 255, 255, 0.3);
 }
+
+/* ===== TELA FINAL (vitória / empate) ===== */
 .overlay {
     display: none;
     position: fixed;
@@ -61,33 +101,30 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 25px;
 }
-
+/* classe adicionada via JS quando o jogo acaba, faz a tela final aparecer */
 .overlay.mostrar {
     display: flex;
 }
-
 #imagem-resultado {
     width: 400px;
     animation: subir 0.4s ease-out;
 }
-
 #btn-restart {
     width: 260px;
     cursor: pointer;
     animation: subir 0.4s ease-out;
     transition: transform 0.15s;
 }
-
-#btn-restart {
+#btn-restart:hover {
     transform: scale(1.05);
 }
-
+/* animação de entrada da mensagem final e do botão, subindo com fade */
 @keyframes subir {
     from {
         opacity: 0;
@@ -97,4 +134,38 @@ h1 {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ===== TELA DE ESCOLHA DE DIFICULDADE ===== */
+.tela-dificuldade {
+    background: linear-gradient(135deg, #a50707, #5c0303);
+    border: 3px solid aliceblue;
+    border-radius: 24px;
+    padding: 40px 50px;
+    text-align: center;
+}
+.tela-dificuldade h2 {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: aliceblue;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+.botoes-dificuldade {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.btn-dificuldade {
+    width: 190px;
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+.btn-dificuldade:hover {
+    transform: scale(1.05);
+}
+
+/* classe usada pra esconder a tela de dificuldade e o indicador/status no fim do jogo */
+.escondido {
+    display: none;
 }
